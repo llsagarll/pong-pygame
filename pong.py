@@ -3,9 +3,11 @@ import random
 import math
 pygame.init()
 
+#setting clock and speed
 clock = pygame.time.Clock()
 speed = 30
 
+#setting the dimension of game window
 display_width = 500
 display_height = 300
 
@@ -28,6 +30,7 @@ def randomize_start():
     if random.randint(0,2) % 2 == 0:
         dy *= -1  
 
+#checking condition for game over
 def game_over():
     endgame = True
     display.fill((0,0,0))
