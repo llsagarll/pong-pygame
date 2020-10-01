@@ -1,6 +1,6 @@
 import pygame
 import random
-
+import math
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -98,7 +98,7 @@ startmsg_rect = startmsg.get_rect(center = (int(display_width/2),int(display_hei
 display.blit(startmsg,startmsg_rect)
 pygame.display.flip()
 
-pygame.time.set_timer(pygame.USEREVENT,10000)
+pygame.time.set_timer(pygame.USEREVENT,10000)   #sets timer 
 
 timer_active = True
 while(timer_active):
@@ -106,7 +106,7 @@ while(timer_active):
         if event.type == pygame.USEREVENT:
             timer_active = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_y:
+            if event.key == pygame.K_y:     
                 timer_active = False
 
 randomize_start()
@@ -129,13 +129,13 @@ while True:
     x+=dx
     y+=dy   
 
-    pygame.draw.rect(display , (255,255,255) , (paddle_x,paddle_y,paddle_width,paddle_height))
-    pygame.draw.circle(display, (255,255,255), (x,y) , radius)
+    pygame.draw.rect(display , (255,255,255) , (paddle_x,paddle_y,paddle_width,paddle_height))   #draws rectangle
+    pygame.draw.circle(display, (255,255,255), (x,y) , radius)   #draws circle
     # print (x)
-    if x < radius:
-        game_over()
+    if x < radius:     #checking whether x is less than radius
+        game_over()    #calling game over
         play_score = 0
-        randomize_start()
+        randomize_start()     #calling randomize start
     if hit_paddle() or hit_back():
         dx *= -1
     if hit_sides():
